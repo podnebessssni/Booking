@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 import java.util.Comparator;
 
-public class TicketByPriceAscComparator implements Comparator<Booking> {
+public class TicketByTravelTimeAscComparator implements Comparator<Booking> {
 
     @Override
     public int compare(Booking o1, Booking o2) {
