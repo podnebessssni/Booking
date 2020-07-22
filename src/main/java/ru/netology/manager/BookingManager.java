@@ -6,6 +6,7 @@ import ru.netology.domain.Booking;
 import ru.netology.repository.BookingRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 @AllArgsConstructor
 @Data
@@ -17,7 +18,7 @@ public class BookingManager {
         repository.save(item);
     }
 
-    public Booking[] findAll(String from, String to) {
+    public Booking[] findAll(String from, String to, Comparator<Booking> comparator) {
         Booking[] result = new Booking[0];
         for (Booking booking : repository.showAll()) {
             if (booking.getDepartAirport().equals(from) && booking.getArriveAirport().equals(to)) {
@@ -27,7 +28,7 @@ public class BookingManager {
                 result = tmp;
             }
         }
-        Arrays.sort(result);
+        Arrays.sort(result, comparator);
         return result;
     }
 }

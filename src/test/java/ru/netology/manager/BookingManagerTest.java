@@ -3,6 +3,7 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Booking;
+import ru.netology.domain.TicketByPriceAscComparator;
 import ru.netology.repository.BookingRepository;
 
 import java.awt.print.Book;
@@ -37,7 +38,7 @@ class BookingManagerTest {
     void shouldShowExistTickets(){
 
         Booking[] expected = {ticket7, ticket2, ticket4};
-        Booking[] actual = manager.findAll("SVO", "AYT");
+        Booking[] actual = manager.findAll("SVO", "AYT", new TicketByPriceAscComparator());
 
         assertArrayEquals(expected, actual);
 
@@ -47,7 +48,7 @@ class BookingManagerTest {
     void shouldShowNonExistTickets(){
 
         Booking[] expected = {};
-        Booking[] actual = manager.findAll("IST", "DME");
+        Booking[] actual = manager.findAll("IST", "DME", new TicketByPriceAscComparator());
 
         assertArrayEquals(expected, actual);
 
